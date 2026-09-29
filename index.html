@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CONBOX - Rent Smart</title>
+
+<title>CONBOX | Smart Rental</title>
 
 <style>
+
+/* =========================
+   GLOBAL
+========================= */
+
 * {
     box-sizing: border-box;
 }
@@ -13,174 +19,416 @@
 body {
     margin: 0;
     font-family: Arial, "Noto Sans Thai", sans-serif;
-    background: #f5f7fb;
-    color: #172033;
+
+    background: #050806;
+    color: #e8ffef;
 }
 
-/* NAVBAR */
+
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
-    height: 70px;
-    background: white;
+    height: 72px;
+
+    background: #0b110d;
+
+    border-bottom: 1px solid #1d3925;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 35px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+
+    padding: 0 40px;
+
     position: sticky;
     top: 0;
-    z-index: 100;
+
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bold;
-    color: #2563eb;
+
+    color: #39ff78;
+
     cursor: pointer;
+
+    letter-spacing: 1px;
 }
 
 .menu {
     display: flex;
-    gap: 8px;
+    gap: 5px;
 }
 
 .menu button {
-    border: none;
     background: transparent;
+
+    border: none;
+
+    color: #c9dfce;
+
     padding: 10px 14px;
-    cursor: pointer;
+
     border-radius: 8px;
+
+    cursor: pointer;
+
     font-size: 14px;
 }
 
 .menu button:hover {
-    background: #eef4ff;
-    color: #2563eb;
+    background: #15351f;
+
+    color: #39ff78;
 }
 
-/* PAGE */
+
+/* =========================
+   PAGE
+========================= */
+
 .page {
     display: none;
-    min-height: calc(100vh - 70px);
-    padding: 45px 8%;
+
+    min-height: calc(100vh - 72px);
+
+    padding: 50px 8%;
 }
 
 .page.active {
     display: block;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
+
 .hero {
-    background: linear-gradient(135deg, #2563eb, #4f8df7);
-    color: white;
-    padding: 70px 50px;
-    border-radius: 25px;
+    min-height: 550px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
     text-align: center;
+
+    border-radius: 28px;
+
+    padding: 60px 30px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #174c29 0%,
+            #0b2113 35%,
+            #050806 75%
+        );
+
+    border: 1px solid #1e572e;
+
+    box-shadow:
+        0 0 60px rgba(34,197,94,.12);
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
+    font-size: 65px;
+
+    margin: 0 0 15px;
+
+    color: #39ff78;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 25px rgba(57,255,120,.4);
 }
 
 .hero p {
-    font-size: 19px;
+    font-size: 20px;
+
+    color: #c9dfce;
+
+    max-width: 650px;
+
+    line-height: 1.8;
 }
 
-/* BUTTON */
+
+/* =========================
+   BUTTON
+========================= */
+
 .btn {
     border: none;
-    padding: 13px 22px;
+
+    padding: 13px 23px;
+
     border-radius: 10px;
+
     cursor: pointer;
+
     font-size: 15px;
+
     font-weight: bold;
-    background: #2563eb;
-    color: white;
+
+    background: #22c55e;
+
+    color: #041008;
+
+    transition: .2s;
 }
 
 .btn:hover {
-    opacity: .9;
+    background: #39ff78;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 20px rgba(34,197,94,.25);
 }
 
 .btn.white {
-    background: white;
-    color: #2563eb;
+    background: #39ff78;
+
+    color: #041008;
 }
 
 .btn.gray {
-    background: #e5e7eb;
-    color: #222;
+    background: #26332a;
+
+    color: #d9f5df;
 }
 
-/* PRODUCTS */
-.section-title {
-    margin-bottom: 25px;
+.btn.gray:hover {
+    background: #34483a;
 }
+
+
+/* =========================
+   TITLES
+========================= */
+
+.section-title {
+    margin-bottom: 30px;
+}
+
+.section-title h1 {
+    color: #39ff78;
+
+    font-size: 35px;
+}
+
+.section-title p {
+    color: #9db6a3;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+input,
+select {
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 9px;
+
+    border: 1px solid #294532;
+
+    background: #0c140f;
+
+    color: #e8ffef;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #39ff78;
+
+    box-shadow:
+        0 0 0 2px rgba(57,255,120,.08);
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
     gap: 25px;
 }
 
 .card {
-    background: white;
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
     border-radius: 18px;
+
     padding: 20px;
-    box-shadow: 0 5px 18px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: #39ff78;
+
+    box-shadow:
+        0 10px 35px rgba(34,197,94,.12);
 }
 
 .product-img {
-    height: 160px;
-    background: #eef2ff;
+    height: 170px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #12281a,
+            #09100c
+        );
+
     border-radius: 15px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     font-size: 70px;
-    margin-bottom: 15px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #1d3925;
 }
 
 .card h3 {
+    color: #e8ffef;
+
     margin: 8px 0;
 }
 
-.price {
-    color: #2563eb;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
+.card p {
+    color: #91aa97;
+
+    line-height: 1.6;
 }
 
-/* DETAIL */
+.price {
+    color: #39ff78;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin: 15px 0;
+}
+
+
+/* =========================
+   DETAIL
+========================= */
+
 .detail-box {
-    background: white;
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
     padding: 35px;
+
     border-radius: 20px;
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 40px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.3);
 }
 
 .detail-img {
-    min-height: 300px;
-    background: #eef2ff;
+    min-height: 320px;
+
+    background:
+        radial-gradient(
+            circle,
+            #183d22,
+            #09100c
+        );
+
     border-radius: 20px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     font-size: 120px;
+
+    border: 1px solid #1d4a2a;
 }
 
-/* FORM */
+.detail-box h1 {
+    color: #39ff78;
+}
+
+.detail-box p {
+    color: #a5baa9;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
 .form-box {
-    max-width: 650px;
+    max-width: 700px;
+
     margin: auto;
-    background: white;
+
+    background: #0c140f;
+
     padding: 35px;
+
     border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+
+    border: 1px solid #1d3925;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.3);
+}
+
+.form-box h1 {
+    color: #39ff78;
 }
 
 .form-group {
@@ -189,137 +437,276 @@ body {
 
 .form-group label {
     display: block;
+
     margin-bottom: 8px;
+
+    color: #d6e9da;
+
     font-weight: bold;
 }
 
-input, select {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 15px;
-}
 
-/* LOCKER */
+/* =========================
+   LOCKER
+========================= */
+
 .lockers {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 15px;
 }
 
 .locker {
     padding: 25px;
-    background: white;
-    border: 2px solid #ddd;
+
+    background: #101a13;
+
+    border: 2px solid #263d2c;
+
     border-radius: 12px;
+
     text-align: center;
+
     cursor: pointer;
+
+    transition: .2s;
 }
 
 .locker:hover {
-    border-color: #2563eb;
+    border-color: #39ff78;
+
+    background: #132319;
 }
 
 .locker.selected {
-    border-color: #2563eb;
-    background: #eef4ff;
+    border-color: #39ff78;
+
+    background: #12301c;
+
+    box-shadow:
+        0 0 20px rgba(57,255,120,.12);
 }
 
-/* PAYMENT */
+.locker h3 {
+    color: #39ff78;
+}
+
+.locker p {
+    color: #91aa97;
+}
+
+
+/* =========================
+   PAYMENT
+========================= */
+
 .payment-option {
     padding: 18px;
-    border: 1px solid #ddd;
+
+    border: 1px solid #263d2c;
+
     border-radius: 10px;
+
     margin-bottom: 12px;
+
     cursor: pointer;
+
+    background: #101a13;
 }
 
 .payment-option:hover {
-    border-color: #2563eb;
+    border-color: #39ff78;
+
+    background: #132319;
 }
 
-/* SUCCESS */
+
+/* =========================
+   SUCCESS
+========================= */
+
 .success {
     text-align: center;
-    background: white;
+
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
     padding: 50px;
+
     border-radius: 20px;
+
     max-width: 700px;
+
     margin: auto;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.3);
 }
 
 .success-icon {
     font-size: 70px;
 }
 
-.booking-code {
-    background: #f1f5f9;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 3px;
+.success h1 {
+    color: #39ff78;
 }
 
-/* QR */
+.booking-code {
+    background: #101a13;
+
+    border: 1px solid #2d633c;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    color: #39ff78;
+}
+
+
+/* =========================
+   QR
+========================= */
+
 .qr {
     width: 180px;
+
     height: 180px;
-    margin: 20px auto;
+
+    margin: 25px auto;
+
     background:
-        linear-gradient(90deg,#000 10px,transparent 10px) 0 0/30px 30px,
-        linear-gradient(#000 10px,transparent 10px) 0 0/30px 30px,
+        linear-gradient(
+            90deg,
+            #000 10px,
+            transparent 10px
+        ) 0 0/30px 30px,
+
+        linear-gradient(
+            #000 10px,
+            transparent 10px
+        ) 0 0/30px 30px,
+
         white;
+
     border: 10px solid white;
-    box-shadow: 0 0 0 1px #ddd;
 }
 
-/* PROFILE */
+
+/* =========================
+   RENTAL
+========================= */
+
+.rental-box {
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.rental-box h1 {
+    color: #39ff78;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
 .profile-box {
     max-width: 600px;
+
     margin: auto;
-    background: white;
+
+    background: #0c140f;
+
     padding: 35px;
+
     border-radius: 20px;
+
+    border: 1px solid #1d3925;
 }
 
-/* RENTAL */
-.rental-box {
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    max-width: 700px;
-    margin: auto;
+.profile-box h1 {
+    color: #39ff78;
 }
 
-/* NOTIFICATION */
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
 .notification {
-    background: white;
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
     padding: 20px;
+
     border-radius: 12px;
+
     margin-bottom: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.05);
 }
 
-/* MOBILE */
+.notification:hover {
+    border-color: #39ff78;
+}
+
+
+/* =========================
+   HR
+========================= */
+
+hr {
+    border: none;
+
+    border-top: 1px solid #1d3925;
+
+    margin: 25px 0;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width: 700px) {
 
     .navbar {
-        padding: 0 15px;
         height: auto;
-        min-height: 70px;
+
+        padding: 15px;
+
         flex-direction: column;
-        padding-bottom: 10px;
+
+        gap: 12px;
     }
 
     .menu {
         flex-wrap: wrap;
+
         justify-content: center;
     }
 
     .hero h1 {
-        font-size: 35px;
+        font-size: 42px;
     }
 
     .detail-box {
@@ -329,32 +716,64 @@ input, select {
     .lockers {
         grid-template-columns: 1fr 1fr;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- NAVBAR -->
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
 <nav class="navbar">
 
-    <div class="logo" onclick="go('home')">
+    <div
+        class="logo"
+        onclick="go('home')"
+    >
         CONBOX
     </div>
 
+
     <div class="menu">
-        <button onclick="go('home')">Home</button>
-        <button onclick="go('products')">สินค้า</button>
-        <button onclick="go('locker')">Smart Locker</button>
-        <button onclick="go('rental')">My Rental</button>
-        <button onclick="go('profile')">Profile</button>
-        <button onclick="go('notifications')">🔔</button>
+
+        <button onclick="go('home')">
+            Home
+        </button>
+
+        <button onclick="go('products')">
+            สินค้า
+        </button>
+
+        <button onclick="go('locker')">
+            Smart Locker
+        </button>
+
+        <button onclick="go('rental')">
+            My Rental
+        </button>
+
+        <button onclick="go('profile')">
+            Profile
+        </button>
+
+        <button onclick="go('notifications')">
+            🔔
+        </button>
+
     </div>
 
 </nav>
 
 
-<!-- ================= HOME ================= -->
+<!-- =========================
+     HOME
+========================= -->
 
 <section id="home" class="page active">
 
@@ -364,12 +783,16 @@ input, select {
 
         <p>
             ไม่จำเป็นต้องเป็นเจ้าของทุกอย่าง
+            <br>
             แค่เข้าถึงสิ่งที่ต้องการเมื่อจำเป็น
         </p>
 
         <br>
 
-        <button class="btn white" onclick="go('products')">
+        <button
+            class="btn white"
+            onclick="go('products')"
+        >
             ดูสินค้าทั้งหมด
         </button>
 
@@ -378,7 +801,9 @@ input, select {
 </section>
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- =========================
+     PRODUCTS
+========================= -->
 
 <section id="products" class="page">
 
@@ -387,7 +812,7 @@ input, select {
         <h1>สินค้าให้เช่า</h1>
 
         <p>
-            เลือกอุปกรณ์ที่คุณต้องการใช้งาน
+            เลือกสิ่งของที่คุณต้องการใช้งาน
         </p>
 
         <input
@@ -399,12 +824,18 @@ input, select {
 
     </div>
 
-    <div id="productList" class="products"></div>
+
+    <div
+        id="productList"
+        class="products"
+    ></div>
 
 </section>
 
 
-<!-- ================= DETAIL ================= -->
+<!-- =========================
+     DETAIL
+========================= -->
 
 <section id="detail" class="page">
 
@@ -413,7 +844,9 @@ input, select {
 </section>
 
 
-<!-- ================= BOOKING ================= -->
+<!-- =========================
+     BOOKING
+========================= -->
 
 <section id="booking" class="page">
 
@@ -425,7 +858,9 @@ input, select {
 
         <div class="form-group">
 
-            <label>วันที่เริ่มเช่า</label>
+            <label>
+                วันที่เริ่มเช่า
+            </label>
 
             <input
                 type="date"
@@ -435,9 +870,12 @@ input, select {
 
         </div>
 
+
         <div class="form-group">
 
-            <label>วันที่คืน</label>
+            <label>
+                วันที่คืน
+            </label>
 
             <input
                 type="date"
@@ -447,34 +885,64 @@ input, select {
 
         </div>
 
+
         <div class="form-group">
 
-            <label>จำนวน</label>
+            <label>
+                จำนวน
+            </label>
 
-            <select id="quantity" onchange="calculatePrice()">
+            <select
+                id="quantity"
+                onchange="calculatePrice()"
+            >
 
-                <option value="1">1 ชิ้น</option>
-                <option value="2">2 ชิ้น</option>
-                <option value="3">3 ชิ้น</option>
+                <option value="1">
+                    1 ชิ้น
+                </option>
+
+                <option value="2">
+                    2 ชิ้น
+                </option>
+
+                <option value="3">
+                    3 ชิ้น
+                </option>
 
             </select>
 
         </div>
 
+
         <hr>
 
+
         <h2>
-            ราคาโดยประมาณ:
-            <span id="totalPrice">฿0</span>
+            ราคา:
+            <span
+                id="totalPrice"
+                class="price"
+            >
+                ฿0
+            </span>
         </h2>
+
 
         <br>
 
-        <button class="btn gray" onclick="go('detail')">
+
+        <button
+            class="btn gray"
+            onclick="go('detail')"
+        >
             ← กลับ
         </button>
 
-        <button class="btn" onclick="goLocker()">
+
+        <button
+            class="btn"
+            onclick="goLocker()"
+        >
             เลือก Smart Locker →
         </button>
 
@@ -483,64 +951,146 @@ input, select {
 </section>
 
 
-<!-- ================= LOCKER ================= -->
+<!-- =========================
+     LOCKER
+========================= -->
 
 <section id="locker" class="page">
 
     <div class="form-box">
 
-        <h1>เลือก Smart Locker</h1>
+        <h1>
+            Smart Locker
+        </h1>
 
         <p>
-            เลือกจุดรับสินค้าที่สะดวกสำหรับคุณ
+            เลือกจุดรับสินค้าที่สะดวก
         </p>
+
 
         <div class="lockers">
 
-            <div class="locker" onclick="selectLocker(this,'CONBOX CMU')">
-                <h3>Locker A</h3>
-                <p>📍 CMU</p>
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX CMU')"
+            >
+
+                <h3>
+                    Locker A
+                </h3>
+
+                <p>
+                    📍 CMU
+                </p>
+
             </div>
 
-            <div class="locker" onclick="selectLocker(this,'CONBOX Maya')">
-                <h3>Locker B</h3>
-                <p>📍 MAYA</p>
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX MAYA')"
+            >
+
+                <h3>
+                    Locker B
+                </h3>
+
+                <p>
+                    📍 MAYA
+                </p>
+
             </div>
 
-            <div class="locker" onclick="selectLocker(this,'CONBOX Nimman')">
-                <h3>Locker C</h3>
-                <p>📍 Nimman</p>
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Nimman')"
+            >
+
+                <h3>
+                    Locker C
+                </h3>
+
+                <p>
+                    📍 Nimman
+                </p>
+
             </div>
 
-            <div class="locker" onclick="selectLocker(this,'CONBOX Central')">
-                <h3>Locker D</h3>
-                <p>📍 Central</p>
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Central')"
+            >
+
+                <h3>
+                    Locker D
+                </h3>
+
+                <p>
+                    📍 Central
+                </p>
+
             </div>
 
-            <div class="locker" onclick="selectLocker(this,'CONBOX Airport')">
-                <h3>Locker E</h3>
-                <p>📍 Airport</p>
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Airport')"
+            >
+
+                <h3>
+                    Locker E
+                </h3>
+
+                <p>
+                    📍 Airport
+                </p>
+
             </div>
 
-            <div class="locker" onclick="selectLocker(this,'CONBOX Old City')">
-                <h3>Locker F</h3>
-                <p>📍 Old City</p>
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Old City')"
+            >
+
+                <h3>
+                    Locker F
+                </h3>
+
+                <p>
+                    📍 Old City
+                </p>
+
             </div>
 
         </div>
 
+
         <br>
+
 
         <p>
             จุดรับที่เลือก:
-            <b id="selectedLocker">ยังไม่ได้เลือก</b>
+            <b id="selectedLocker">
+                ยังไม่ได้เลือก
+            </b>
         </p>
 
-        <button class="btn gray" onclick="go('booking')">
+
+        <button
+            class="btn gray"
+            onclick="go('booking')"
+        >
             ← กลับ
         </button>
 
-        <button class="btn" onclick="goPayment()">
+
+        <button
+            class="btn"
+            onclick="goPayment()"
+        >
             ดำเนินการชำระเงิน →
         </button>
 
@@ -549,19 +1099,29 @@ input, select {
 </section>
 
 
-<!-- ================= PAYMENT ================= -->
+<!-- =========================
+     PAYMENT
+========================= -->
 
 <section id="payment" class="page">
 
     <div class="form-box">
 
-        <h1>ชำระเงิน</h1>
+        <h1>
+            ชำระเงิน
+        </h1>
+
 
         <div id="paymentSummary"></div>
 
+
         <hr>
 
-        <h3>เลือกวิธีชำระเงิน</h3>
+
+        <h3>
+            เลือกวิธีชำระเงิน
+        </h3>
+
 
         <div
             class="payment-option"
@@ -570,12 +1130,14 @@ input, select {
             💳 PromptPay
         </div>
 
+
         <div
             class="payment-option"
             onclick="selectPayment('Credit Card')"
         >
             💳 Credit / Debit Card
         </div>
+
 
         <div
             class="payment-option"
@@ -584,16 +1146,27 @@ input, select {
             📱 Mobile Banking
         </div>
 
+
         <p>
             วิธีที่เลือก:
-            <b id="selectedPayment">ยังไม่ได้เลือก</b>
+            <b id="selectedPayment">
+                ยังไม่ได้เลือก
+            </b>
         </p>
 
-        <button class="btn gray" onclick="go('locker')">
+
+        <button
+            class="btn gray"
+            onclick="go('locker')"
+        >
             ← กลับ
         </button>
 
-        <button class="btn" onclick="confirmBooking()">
+
+        <button
+            class="btn"
+            onclick="confirmBooking()"
+        >
             ยืนยันการเช่า
         </button>
 
@@ -602,7 +1175,9 @@ input, select {
 </section>
 
 
-<!-- ================= SUCCESS ================= -->
+<!-- =========================
+     SUCCESS
+========================= -->
 
 <section id="success" class="page">
 
@@ -612,31 +1187,53 @@ input, select {
             ✅
         </div>
 
-        <h1>จองสำเร็จ!</h1>
+
+        <h1>
+            จองสำเร็จ!
+        </h1>
+
 
         <p>
             ขอบคุณที่ใช้บริการ CONBOX
         </p>
 
-        <p>รหัสการจอง</p>
 
-        <div class="booking-code" id="bookingCode">
+        <p>
+            รหัสการจอง
+        </p>
+
+
+        <div
+            class="booking-code"
+            id="bookingCode"
+        >
             CB000000
         </div>
 
+
         <div class="qr"></div>
+
 
         <p>
             ใช้ QR Code นี้เพื่อเปิด Smart Locker
         </p>
 
+
         <br>
 
-        <button class="btn" onclick="go('rental')">
+
+        <button
+            class="btn"
+            onclick="go('rental')"
+        >
             ดูรายการเช่าของฉัน
         </button>
 
-        <button class="btn gray" onclick="go('home')">
+
+        <button
+            class="btn gray"
+            onclick="go('home')"
+        >
             กลับหน้าแรก
         </button>
 
@@ -645,13 +1242,18 @@ input, select {
 </section>
 
 
-<!-- ================= MY RENTAL ================= -->
+<!-- =========================
+     MY RENTAL
+========================= -->
 
 <section id="rental" class="page">
 
     <div class="rental-box">
 
-        <h1>My Rental</h1>
+        <h1>
+            My Rental
+        </h1>
+
 
         <div id="rentalContent">
 
@@ -659,7 +1261,11 @@ input, select {
                 ยังไม่มีรายการเช่า
             </p>
 
-            <button class="btn" onclick="go('products')">
+
+            <button
+                class="btn"
+                onclick="go('products')"
+            >
                 เริ่มเช่าสินค้า
             </button>
 
@@ -670,30 +1276,59 @@ input, select {
 </section>
 
 
-<!-- ================= PROFILE ================= -->
+<!-- =========================
+     PROFILE
+========================= -->
 
 <section id="profile" class="page">
 
     <div class="profile-box">
 
-        <h1>Profile</h1>
+        <h1>
+            Profile
+        </h1>
 
-        <p>👤 ชื่อผู้ใช้งาน</p>
-        <h3>CONBOX User</h3>
+
+        <p>
+            👤 ชื่อผู้ใช้งาน
+        </p>
+
+        <h3>
+            CONBOX User
+        </h3>
+
 
         <hr>
 
-        <p>📧 Email</p>
-        <p>user@conbox.com</p>
+
+        <p>
+            📧 Email
+        </p>
+
+        <p>
+            user@conbox.com
+        </p>
+
 
         <hr>
 
-        <p>📱 เบอร์โทรศัพท์</p>
-        <p>08X-XXX-XXXX</p>
+
+        <p>
+            📱 เบอร์โทรศัพท์
+        </p>
+
+        <p>
+            08X-XXX-XXXX
+        </p>
+
 
         <br>
 
-        <button class="btn" onclick="go('rental')">
+
+        <button
+            class="btn"
+            onclick="go('rental')"
+        >
             My Rental
         </button>
 
@@ -702,28 +1337,56 @@ input, select {
 </section>
 
 
-<!-- ================= NOTIFICATIONS ================= -->
+<!-- =========================
+     NOTIFICATIONS
+========================= -->
 
-<section id="notifications" class="page">
+<section
+    id="notifications"
+    class="page"
+>
 
-    <h1>Notifications</h1>
+    <h1>
+        Notifications
+    </h1>
+
 
     <div class="notification">
-        🔔 <b>การจองสำเร็จ</b>
+
+        🔔 <b>
+            การจองสำเร็จ
+        </b>
+
         <br>
+
         รายการเช่าของคุณได้รับการยืนยันแล้ว
+
     </div>
 
+
     <div class="notification">
-        📦 <b>สินค้าใกล้ถึงกำหนดคืน</b>
+
+        📦 <b>
+            สินค้าใกล้ถึงกำหนดคืน
+        </b>
+
         <br>
+
         กรุณาคืนสินค้าตามเวลาที่กำหนด
+
     </div>
 
+
     <div class="notification">
-        🎉 <b>โปรโมชั่นพิเศษ</b>
+
+        🎉 <b>
+            โปรโมชั่นพิเศษ
+        </b>
+
         <br>
+
         รับส่วนลดสำหรับการเช่าครั้งถัดไป
+
     </div>
 
 </section>
@@ -731,9 +1394,9 @@ input, select {
 
 <script>
 
-/* =================================================
-   CONBOX JAVASCRIPT
-================================================= */
+/* =========================
+   PRODUCT DATA
+========================= */
 
 const products = [
 
@@ -741,84 +1404,106 @@ const products = [
         name: "กล้องถ่ายรูป",
         icon: "📷",
         price: 300,
-        description: "กล้องถ่ายรูปสำหรับท่องเที่ยวและกิจกรรมต่าง ๆ"
+        description:
+        "กล้องถ่ายรูปสำหรับท่องเที่ยวและกิจกรรมต่าง ๆ"
     },
 
     {
         name: "Projector",
         icon: "📽️",
         price: 250,
-        description: "โปรเจกเตอร์สำหรับนำเสนอหรือดูหนัง"
+        description:
+        "โปรเจกเตอร์สำหรับนำเสนอหรือดูหนัง"
     },
 
     {
         name: "เต็นท์",
         icon: "⛺",
         price: 200,
-        description: "เต็นท์สำหรับแคมป์ปิ้งและท่องเที่ยว"
+        description:
+        "เต็นท์สำหรับแคมป์ปิ้งและท่องเที่ยว"
     },
 
     {
         name: "ลำโพง",
         icon: "🔊",
         price: 150,
-        description: "ลำโพงสำหรับงานปาร์ตี้และกิจกรรม"
+        description:
+        "ลำโพงสำหรับงานปาร์ตี้และกิจกรรม"
     },
 
     {
         name: "GoPro",
         icon: "🎥",
         price: 350,
-        description: "กล้อง Action Camera สำหรับกิจกรรมกลางแจ้ง"
+        description:
+        "กล้อง Action Camera สำหรับกิจกรรมกลางแจ้ง"
     },
 
     {
         name: "Gaming Console",
         icon: "🎮",
         price: 400,
-        description: "เครื่องเล่นเกมสำหรับเช่าเล่นที่บ้าน"
+        description:
+        "เครื่องเล่นเกมสำหรับเช่าเล่นที่บ้าน"
     }
 
 ];
 
 
 let selectedProduct = null;
+
 let selectedLockerName = "";
+
 let selectedPaymentMethod = "";
+
 let currentRental = null;
 
 
-/* ===============================
-   CHANGE PAGE
-================================ */
+/* =========================
+   PAGE NAVIGATION
+========================= */
 
 function go(pageId) {
 
-    const pages = document.querySelectorAll(".page");
+    const pages =
+        document.querySelectorAll(".page");
+
 
     pages.forEach(function(page) {
+
         page.classList.remove("active");
+
     });
 
-    const target = document.getElementById(pageId);
+
+    const target =
+        document.getElementById(pageId);
+
 
     if (target) {
+
         target.classList.add("active");
+
         window.scrollTo(0, 0);
+
     }
 
 }
 
 
-/* ===============================
+/* =========================
    RENDER PRODUCTS
-================================ */
+========================= */
 
 function renderProducts(list) {
 
-    const container = document.getElementById("productList");
+    const container =
+        document.getElementById("productList");
+
 
     container.innerHTML = "";
+
 
     if (list.length === 0) {
 
@@ -826,14 +1511,22 @@ function renderProducts(list) {
             "<p>ไม่พบสินค้าที่ค้นหา</p>";
 
         return;
+
     }
 
 
-    list.forEach(function(product, index) {
+    list.forEach(function(product) {
 
-        const card = document.createElement("div");
+        const index =
+            products.indexOf(product);
+
+
+        const card =
+            document.createElement("div");
+
 
         card.className = "card";
+
 
         card.innerHTML =
 
@@ -850,12 +1543,20 @@ function renderProducts(list) {
             '</p>' +
 
             '<div class="price">' +
-                '฿' + product.price + ' / วัน' +
+                '฿' +
+                product.price +
+                ' / วัน' +
             '</div>' +
 
-            '<button class="btn" onclick="openDetail(' + index + ')">' +
+            '<button class="btn" ' +
+                'onclick="openDetail(' +
+                index +
+                ')">' +
+
                 'ดูรายละเอียด' +
+
             '</button>';
+
 
         container.appendChild(card);
 
@@ -864,16 +1565,20 @@ function renderProducts(list) {
 }
 
 
-/* ===============================
-   PRODUCT DETAIL
-================================ */
+/* =========================
+   DETAIL
+========================= */
 
 function openDetail(index) {
 
-    selectedProduct = products[index];
+    selectedProduct =
+        products[index];
+
 
     const container =
-        document.getElementById("detailContent");
+        document.getElementById(
+            "detailContent"
+        );
 
 
     container.innerHTML =
@@ -900,18 +1605,28 @@ function openDetail(index) {
                     ' / วัน' +
                 '</h2>' +
 
-                '<p>✓ สินค้าตรวจสอบก่อนส่งมอบ</p>' +
+                '<p>✓ ตรวจสอบสินค้าก่อนส่งมอบ</p>' +
+
                 '<p>✓ รับสินค้าผ่าน Smart Locker</p>' +
+
                 '<p>✓ คืนสินค้าได้ง่าย</p>' +
 
                 '<br>' +
 
-                '<button class="btn gray" onclick="go(\'products\')">' +
+                '<button ' +
+                    'class="btn gray" ' +
+                    'onclick="go(\'products\')">' +
+
                     '← กลับ' +
+
                 '</button> ' +
 
-                '<button class="btn" onclick="openBooking()">' +
+                '<button ' +
+                    'class="btn" ' +
+                    'onclick="openBooking()">' +
+
                     'เช่าสินค้านี้ →' +
+
                 '</button>' +
 
             '</div>' +
@@ -924,77 +1639,128 @@ function openDetail(index) {
 }
 
 
-/* ===============================
+/* =========================
    BOOKING
-================================ */
+========================= */
 
 function openBooking() {
 
     if (!selectedProduct) {
+
         go("products");
+
         return;
+
     }
 
-    document.getElementById("bookingProduct").innerHTML =
+
+    document.getElementById(
+        "bookingProduct"
+    ).innerHTML =
+
         "<b>สินค้า:</b> " +
+
         selectedProduct.name +
+
         " — ฿" +
+
         selectedProduct.price +
+
         " / วัน";
 
-    document.getElementById("startDate").value = "";
-    document.getElementById("endDate").value = "";
-    document.getElementById("quantity").value = "1";
-    document.getElementById("totalPrice").innerText = "฿0";
+
+    document.getElementById(
+        "startDate"
+    ).value = "";
+
+
+    document.getElementById(
+        "endDate"
+    ).value = "";
+
+
+    document.getElementById(
+        "quantity"
+    ).value = "1";
+
+
+    document.getElementById(
+        "totalPrice"
+    ).innerText = "฿0";
+
 
     go("booking");
 
 }
 
 
-/* ===============================
-   CALCULATE PRICE
-================================ */
+/* =========================
+   CALCULATE
+========================= */
 
 function calculatePrice() {
 
     if (!selectedProduct) {
+
         return;
+
     }
 
+
     const start =
-        document.getElementById("startDate").value;
+        document.getElementById(
+            "startDate"
+        ).value;
+
 
     const end =
-        document.getElementById("endDate").value;
+        document.getElementById(
+            "endDate"
+        ).value;
+
 
     const quantity =
-        Number(document.getElementById("quantity").value);
+        Number(
+            document.getElementById(
+                "quantity"
+            ).value
+        );
 
 
     if (!start || !end) {
 
-        document.getElementById("totalPrice").innerText =
-            "฿0";
+        document.getElementById(
+            "totalPrice"
+        ).innerText = "฿0";
 
         return;
+
     }
 
 
-    const startDate = new Date(start);
-    const endDate = new Date(end);
+    const startDate =
+        new Date(start);
+
+
+    const endDate =
+        new Date(end);
+
 
     const difference =
         endDate - startDate;
 
+
     let days =
         Math.ceil(
-            difference / (1000 * 60 * 60 * 24)
+            difference /
+            (1000 * 60 * 60 * 24)
         );
 
 
     if (days < 1) {
+
         days = 1;
+
     }
 
 
@@ -1004,44 +1770,67 @@ function calculatePrice() {
         quantity;
 
 
-    document.getElementById("totalPrice").innerText =
-        "฿" + total.toLocaleString();
+    document.getElementById(
+        "totalPrice"
+    ).innerText =
+
+        "฿" +
+        total.toLocaleString();
 
 }
 
 
-/* ===============================
-   GO LOCKER
-================================ */
+/* =========================
+   LOCKER
+========================= */
 
 function goLocker() {
 
     if (!selectedProduct) {
-        alert("กรุณาเลือกสินค้าก่อน");
+
+        alert(
+            "กรุณาเลือกสินค้าก่อน"
+        );
+
         return;
+
     }
 
 
     const start =
-        document.getElementById("startDate").value;
+        document.getElementById(
+            "startDate"
+        ).value;
+
 
     const end =
-        document.getElementById("endDate").value;
+        document.getElementById(
+            "endDate"
+        ).value;
 
 
     if (!start || !end) {
 
-        alert("กรุณาเลือกวันที่เริ่มเช่าและวันที่คืน");
+        alert(
+            "กรุณาเลือกวันที่"
+        );
 
         return;
+
     }
 
 
-    if (new Date(end) < new Date(start)) {
+    if (
+        new Date(end) <
+        new Date(start)
+    ) {
 
-        alert("วันที่คืนต้องไม่ก่อนวันที่เริ่มเช่า");
+        alert(
+            "วันที่คืนต้องไม่ก่อนวันที่เริ่มเช่า"
+        );
 
         return;
+
     }
 
 
@@ -1050,45 +1839,61 @@ function goLocker() {
 }
 
 
-/* ===============================
+/* =========================
    SELECT LOCKER
-================================ */
+========================= */
 
-function selectLocker(element, lockerName) {
+function selectLocker(
+    element,
+    lockerName
+) {
 
     const lockers =
-        document.querySelectorAll(".locker");
+        document.querySelectorAll(
+            ".locker"
+        );
 
 
     lockers.forEach(function(locker) {
 
-        locker.classList.remove("selected");
+        locker.classList.remove(
+            "selected"
+        );
 
     });
 
 
-    element.classList.add("selected");
+    element.classList.add(
+        "selected"
+    );
 
-    selectedLockerName = lockerName;
+
+    selectedLockerName =
+        lockerName;
 
 
-    document.getElementById("selectedLocker").innerText =
+    document.getElementById(
+        "selectedLocker"
+    ).innerText =
         lockerName;
 
 }
 
 
-/* ===============================
+/* =========================
    PAYMENT
-================================ */
+========================= */
 
 function goPayment() {
 
     if (!selectedLockerName) {
 
-        alert("กรุณาเลือก Smart Locker");
+        alert(
+            "กรุณาเลือก Smart Locker"
+        );
 
         return;
+
     }
 
 
@@ -1096,10 +1901,14 @@ function goPayment() {
 
 
     const total =
-        document.getElementById("totalPrice").innerText;
+        document.getElementById(
+            "totalPrice"
+        ).innerText;
 
 
-    document.getElementById("paymentSummary").innerHTML =
+    document.getElementById(
+        "paymentSummary"
+    ).innerHTML =
 
         "<p><b>สินค้า:</b> " +
         selectedProduct.name +
@@ -1119,38 +1928,47 @@ function goPayment() {
 }
 
 
-/* ===============================
-   SELECT PAYMENT
-================================ */
+/* =========================
+   PAYMENT METHOD
+========================= */
 
 function selectPayment(method) {
 
-    selectedPaymentMethod = method;
+    selectedPaymentMethod =
+        method;
 
-    document.getElementById("selectedPayment").innerText =
+
+    document.getElementById(
+        "selectedPayment"
+    ).innerText =
         method;
 
 }
 
 
-/* ===============================
-   CONFIRM BOOKING
-================================ */
+/* =========================
+   CONFIRM
+========================= */
 
 function confirmBooking() {
 
     if (!selectedPaymentMethod) {
 
-        alert("กรุณาเลือกวิธีชำระเงิน");
+        alert(
+            "กรุณาเลือกวิธีชำระเงิน"
+        );
 
         return;
+
     }
 
 
     const code =
         "CB" +
         Math.floor(
-            100000 + Math.random() * 900000
+            100000 +
+            Math.random() *
+            900000
         );
 
 
@@ -1158,25 +1976,36 @@ function confirmBooking() {
 
         code: code,
 
-        product: selectedProduct.name,
+        product:
+            selectedProduct.name,
 
-        locker: selectedLockerName,
+        locker:
+            selectedLockerName,
 
-        payment: selectedPaymentMethod,
+        payment:
+            selectedPaymentMethod,
 
         start:
-            document.getElementById("startDate").value,
+            document.getElementById(
+                "startDate"
+            ).value,
 
         end:
-            document.getElementById("endDate").value,
+            document.getElementById(
+                "endDate"
+            ).value,
 
         total:
-            document.getElementById("totalPrice").innerText
+            document.getElementById(
+                "totalPrice"
+            ).innerText
 
     };
 
 
-    document.getElementById("bookingCode").innerText =
+    document.getElementById(
+        "bookingCode"
+    ).innerText =
         code;
 
 
@@ -1188,75 +2017,85 @@ function confirmBooking() {
 }
 
 
-/* ===============================
-   UPDATE MY RENTAL
-================================ */
+/* =========================
+   RENTAL
+========================= */
 
 function updateRental() {
 
     if (!currentRental) {
+
         return;
+
     }
 
 
-    document.getElementById("rentalContent").innerHTML =
+    document.getElementById(
+        "rentalContent"
+    ).innerHTML =
 
-        '<h2>📦 ' +
-            currentRental.product +
-        '</h2>' +
+        "<h2>📦 " +
+        currentRental.product +
+        "</h2>" +
 
-        '<p><b>รหัสการจอง:</b> ' +
-            currentRental.code +
-        '</p>' +
+        "<p><b>รหัสการจอง:</b> " +
+        currentRental.code +
+        "</p>" +
 
-        '<p><b>วันเริ่มเช่า:</b> ' +
-            currentRental.start +
-        '</p>' +
+        "<p><b>วันเริ่มเช่า:</b> " +
+        currentRental.start +
+        "</p>" +
 
-        '<p><b>วันคืน:</b> ' +
-            currentRental.end +
-        '</p>' +
+        "<p><b>วันคืน:</b> " +
+        currentRental.end +
+        "</p>" +
 
-        '<p><b>Smart Locker:</b> ' +
-            currentRental.locker +
-        '</p>' +
+        "<p><b>Smart Locker:</b> " +
+        currentRental.locker +
+        "</p>" +
 
-        '<p><b>การชำระเงิน:</b> ' +
-            currentRental.payment +
-        '</p>' +
+        "<p><b>การชำระเงิน:</b> " +
+        currentRental.payment +
+        "</p>" +
 
         '<h2 class="price">' +
-            currentRental.total +
-        '</h2>' +
+        currentRental.total +
+        "</h2>" +
 
-        '<hr>' +
+        "<hr>" +
 
-        '<button class="btn" onclick="go(\'success\')">' +
-            'ดู QR รับสินค้า' +
-        '</button>';
+        '<button class="btn" ' +
+        'onclick="go(\'success\')">' +
+
+        "ดู QR รับสินค้า" +
+
+        "</button>";
 
 }
 
 
-/* ===============================
+/* =========================
    SEARCH
-================================ */
+========================= */
 
 function searchProduct() {
 
     const keyword =
-        document.getElementById("search").value
-        .toLowerCase();
+        document.getElementById(
+            "search"
+        ).value.toLowerCase();
 
 
     const filtered =
-        products.filter(function(product) {
+        products.filter(
+            function(product) {
 
-            return product.name
-                .toLowerCase()
-                .includes(keyword);
+                return product.name
+                    .toLowerCase()
+                    .includes(keyword);
 
-        });
+            }
+        );
 
 
     renderProducts(filtered);
@@ -1264,9 +2103,9 @@ function searchProduct() {
 }
 
 
-/* ===============================
+/* =========================
    START
-================================ */
+========================= */
 
 renderProducts(products);
 
