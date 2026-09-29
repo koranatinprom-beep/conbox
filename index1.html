@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CONBOX | Smart Rental</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Thai", sans-serif;
+
+    background: #050806;
+    color: #e8ffef;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 72px;
+
+    background: #0b110d;
+
+    border-bottom: 1px solid #1d3925;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+
+    color: #39ff78;
+
+    cursor: pointer;
+
+    letter-spacing: 1px;
+}
+
+.menu {
+    display: flex;
+    gap: 5px;
+}
+
+.menu button {
+    background: transparent;
+
+    border: none;
+
+    color: #c9dfce;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.menu button:hover {
+    background: #15351f;
+
+    color: #39ff78;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    display: none;
+
+    min-height: calc(100vh - 72px);
+
+    padding: 50px 8%;
+}
+
+.page.active {
+    display: block;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 550px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 28px;
+
+    padding: 60px 30px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #174c29 0%,
+            #0b2113 35%,
+            #050806 75%
+        );
+
+    border: 1px solid #1e572e;
+
+    box-shadow:
+        0 0 60px rgba(34,197,94,.12);
+}
+
+.hero h1 {
+    font-size: 65px;
+
+    margin: 0 0 15px;
+
+    color: #39ff78;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 25px rgba(57,255,120,.4);
+}
+
+.hero p {
+    font-size: 20px;
+
+    color: #c9dfce;
+
+    max-width: 650px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn {
+    border: none;
+
+    padding: 13px 23px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    background: #22c55e;
+
+    color: #041008;
+
+    transition: .2s;
+}
+
+.btn:hover {
+    background: #39ff78;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 20px rgba(34,197,94,.25);
+}
+
+.btn.white {
+    background: #39ff78;
+
+    color: #041008;
+}
+
+.btn.gray {
+    background: #26332a;
+
+    color: #d9f5df;
+}
+
+.btn.gray:hover {
+    background: #34483a;
+}
+
+
+/* =========================
+   TITLES
+========================= */
+
+.section-title {
+    margin-bottom: 30px;
+}
+
+.section-title h1 {
+    color: #39ff78;
+
+    font-size: 35px;
+}
+
+.section-title p {
+    color: #9db6a3;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+input,
+select {
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 9px;
+
+    border: 1px solid #294532;
+
+    background: #0c140f;
+
+    color: #e8ffef;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: #39ff78;
+
+    box-shadow:
+        0 0 0 2px rgba(57,255,120,.08);
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 25px;
+}
+
+.card {
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: #39ff78;
+
+    box-shadow:
+        0 10px 35px rgba(34,197,94,.12);
+}
+
+.product-img {
+    height: 170px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #12281a,
+            #09100c
+        );
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 70px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #1d3925;
+}
+
+.card h3 {
+    color: #e8ffef;
+
+    margin: 8px 0;
+}
+
+.card p {
+    color: #91aa97;
+
+    line-height: 1.6;
+}
+
+.price {
+    color: #39ff78;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin: 15px 0;
+}
+
+
+/* =========================
+   DETAIL
+========================= */
+
+.detail-box {
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.3);
+}
+
+.detail-img {
+    min-height: 320px;
+
+    background:
+        radial-gradient(
+            circle,
+            #183d22,
+            #09100c
+        );
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 120px;
+
+    border: 1px solid #1d4a2a;
+}
+
+.detail-box h1 {
+    color: #39ff78;
+}
+
+.detail-box p {
+    color: #a5baa9;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-box {
+    max-width: 700px;
+
+    margin: auto;
+
+    background: #0c140f;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    border: 1px solid #1d3925;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.3);
+}
+
+.form-box h1 {
+    color: #39ff78;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #d6e9da;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   LOCKER
+========================= */
+
+.lockers {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.locker {
+    padding: 25px;
+
+    background: #101a13;
+
+    border: 2px solid #263d2c;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.locker:hover {
+    border-color: #39ff78;
+
+    background: #132319;
+}
+
+.locker.selected {
+    border-color: #39ff78;
+
+    background: #12301c;
+
+    box-shadow:
+        0 0 20px rgba(57,255,120,.12);
+}
+
+.locker h3 {
+    color: #39ff78;
+}
+
+.locker p {
+    color: #91aa97;
+}
+
+
+/* =========================
+   PAYMENT
+========================= */
+
+.payment-option {
+    padding: 18px;
+
+    border: 1px solid #263d2c;
+
+    border-radius: 10px;
+
+    margin-bottom: 12px;
+
+    cursor: pointer;
+
+    background: #101a13;
+}
+
+.payment-option:hover {
+    border-color: #39ff78;
+
+    background: #132319;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success {
+    text-align: center;
+
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
+    padding: 50px;
+
+    border-radius: 20px;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.3);
+}
+
+.success-icon {
+    font-size: 70px;
+}
+
+.success h1 {
+    color: #39ff78;
+}
+
+.booking-code {
+    background: #101a13;
+
+    border: 1px solid #2d633c;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    color: #39ff78;
+}
+
+
+/* =========================
+   QR
+========================= */
+
+.qr {
+    width: 180px;
+
+    height: 180px;
+
+    margin: 25px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            #000 10px,
+            transparent 10px
+        ) 0 0/30px 30px,
+
+        linear-gradient(
+            #000 10px,
+            transparent 10px
+        ) 0 0/30px 30px,
+
+        white;
+
+    border: 10px solid white;
+}
+
+
+/* =========================
+   RENTAL
+========================= */
+
+.rental-box {
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.rental-box h1 {
+    color: #39ff78;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-box {
+    max-width: 600px;
+
+    margin: auto;
+
+    background: #0c140f;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    border: 1px solid #1d3925;
+}
+
+.profile-box h1 {
+    color: #39ff78;
+}
+
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+.notification {
+    background: #0c140f;
+
+    border: 1px solid #1d3925;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-bottom: 15px;
+}
+
+.notification:hover {
+    border-color: #39ff78;
+}
+
+
+/* =========================
+   HR
+========================= */
+
+hr {
+    border: none;
+
+    border-top: 1px solid #1d3925;
+
+    margin: 25px 0;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 700px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 15px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .detail-box {
+        grid-template-columns: 1fr;
+    }
+
+    .lockers {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div
+        class="logo"
+        onclick="go('home')"
+    >
+        CONBOX
+    </div>
+
+
+    <div class="menu">
+
+        <button onclick="go('home')">
+            Home
+        </button>
+
+        <button onclick="go('products')">
+            สินค้า
+        </button>
+
+        <button onclick="go('locker')">
+            Smart Locker
+        </button>
+
+        <button onclick="go('rental')">
+            My Rental
+        </button>
+
+        <button onclick="go('profile')">
+            Profile
+        </button>
+
+        <button onclick="go('notifications')">
+            🔔
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <h1>CONBOX</h1>
+
+        <p>
+            ไม่จำเป็นต้องเป็นเจ้าของทุกอย่าง
+            <br>
+            แค่เข้าถึงสิ่งที่ต้องการเมื่อจำเป็น
+        </p>
+
+        <br>
+
+        <button
+            class="btn white"
+            onclick="go('products')"
+        >
+            ดูสินค้าทั้งหมด
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section id="products" class="page">
+
+    <div class="section-title">
+
+        <h1>สินค้าให้เช่า</h1>
+
+        <p>
+            เลือกสิ่งของที่คุณต้องการใช้งาน
+        </p>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 ค้นหาสินค้า..."
+            oninput="searchProduct()"
+        >
+
+    </div>
+
+
+    <div
+        id="productList"
+        class="products"
+    ></div>
+
+</section>
+
+
+<!-- =========================
+     DETAIL
+========================= -->
+
+<section id="detail" class="page">
+
+    <div id="detailContent"></div>
+
+</section>
+
+
+<!-- =========================
+     BOOKING
+========================= -->
+
+<section id="booking" class="page">
+
+    <div class="form-box">
+
+        <h1>จองสินค้า</h1>
+
+        <p id="bookingProduct"></p>
+
+        <div class="form-group">
+
+            <label>
+                วันที่เริ่มเช่า
+            </label>
+
+            <input
+                type="date"
+                id="startDate"
+                onchange="calculatePrice()"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                วันที่คืน
+            </label>
+
+            <input
+                type="date"
+                id="endDate"
+                onchange="calculatePrice()"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                จำนวน
+            </label>
+
+            <select
+                id="quantity"
+                onchange="calculatePrice()"
+            >
+
+                <option value="1">
+                    1 ชิ้น
+                </option>
+
+                <option value="2">
+                    2 ชิ้น
+                </option>
+
+                <option value="3">
+                    3 ชิ้น
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <hr>
+
+
+        <h2>
+            ราคา:
+            <span
+                id="totalPrice"
+                class="price"
+            >
+                ฿0
+            </span>
+        </h2>
+
+
+        <br>
+
+
+        <button
+            class="btn gray"
+            onclick="go('detail')"
+        >
+            ← กลับ
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="goLocker()"
+        >
+            เลือก Smart Locker →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LOCKER
+========================= -->
+
+<section id="locker" class="page">
+
+    <div class="form-box">
+
+        <h1>
+            Smart Locker
+        </h1>
+
+        <p>
+            เลือกจุดรับสินค้าที่สะดวก
+        </p>
+
+
+        <div class="lockers">
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX CMU')"
+            >
+
+                <h3>
+                    Locker A
+                </h3>
+
+                <p>
+                    📍 CMU
+                </p>
+
+            </div>
+
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX MAYA')"
+            >
+
+                <h3>
+                    Locker B
+                </h3>
+
+                <p>
+                    📍 MAYA
+                </p>
+
+            </div>
+
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Nimman')"
+            >
+
+                <h3>
+                    Locker C
+                </h3>
+
+                <p>
+                    📍 Nimman
+                </p>
+
+            </div>
+
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Central')"
+            >
+
+                <h3>
+                    Locker D
+                </h3>
+
+                <p>
+                    📍 Central
+                </p>
+
+            </div>
+
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Airport')"
+            >
+
+                <h3>
+                    Locker E
+                </h3>
+
+                <p>
+                    📍 Airport
+                </p>
+
+            </div>
+
+
+            <div
+                class="locker"
+                onclick="selectLocker(this,'CONBOX Old City')"
+            >
+
+                <h3>
+                    Locker F
+                </h3>
+
+                <p>
+                    📍 Old City
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <p>
+            จุดรับที่เลือก:
+            <b id="selectedLocker">
+                ยังไม่ได้เลือก
+            </b>
+        </p>
+
+
+        <button
+            class="btn gray"
+            onclick="go('booking')"
+        >
+            ← กลับ
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="goPayment()"
+        >
+            ดำเนินการชำระเงิน →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAYMENT
+========================= -->
+
+<section id="payment" class="page">
+
+    <div class="form-box">
+
+        <h1>
+            ชำระเงิน
+        </h1>
+
+
+        <div id="paymentSummary"></div>
+
+
+        <hr>
+
+
+        <h3>
+            เลือกวิธีชำระเงิน
+        </h3>
+
+
+        <div
+            class="payment-option"
+            onclick="selectPayment('PromptPay')"
+        >
+            💳 PromptPay
+        </div>
+
+
+        <div
+            class="payment-option"
+            onclick="selectPayment('Credit Card')"
+        >
+            💳 Credit / Debit Card
+        </div>
+
+
+        <div
+            class="payment-option"
+            onclick="selectPayment('Mobile Banking')"
+        >
+            📱 Mobile Banking
+        </div>
+
+
+        <p>
+            วิธีที่เลือก:
+            <b id="selectedPayment">
+                ยังไม่ได้เลือก
+            </b>
+        </p>
+
+
+        <button
+            class="btn gray"
+            onclick="go('locker')"
+        >
+            ← กลับ
+        </button>
+
+
+        <button
+            class="btn"
+            onclick="confirmBooking()"
+        >
+            ยืนยันการเช่า
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SUCCESS
+========================= -->
+
+<section id="success" class="page">
+
+    <div class="success">
+
+        <div class="success-icon">
+            ✅
+        </div>
+
+
+        <h1>
+            จองสำเร็จ!
+        </h1>
+
+
+        <p>
+            ขอบคุณที่ใช้บริการ CONBOX
+        </p>
+
+
+        <p>
+            รหัสการจอง
+        </p>
+
+
+        <div
+            class="booking-code"
+            id="bookingCode"
+        >
+            CB000000
+        </div>
+
+
+        <div class="qr"></div>
+
+
+        <p>
+            ใช้ QR Code นี้เพื่อเปิด Smart Locker
+        </p>
+
+
+        <br>
+
+
+        <button
+            class="btn"
+            onclick="go('rental')"
+        >
+            ดูรายการเช่าของฉัน
+        </button>
+
+
+        <button
+            class="btn gray"
+            onclick="go('home')"
+        >
+            กลับหน้าแรก
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MY RENTAL
+========================= -->
+
+<section id="rental" class="page">
+
+    <div class="rental-box">
+
+        <h1>
+            My Rental
+        </h1>
+
+
+        <div id="rentalContent">
+
+            <p>
+                ยังไม่มีรายการเช่า
+            </p>
+
+
+            <button
+                class="btn"
+                onclick="go('products')"
+            >
+                เริ่มเช่าสินค้า
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROFILE
+========================= -->
+
+<section id="profile" class="page">
+
+    <div class="profile-box">
+
+        <h1>
+            Profile
+        </h1>
+
+
+        <p>
+            👤 ชื่อผู้ใช้งาน
+        </p>
+
+        <h3>
+            CONBOX User
+        </h3>
+
+
+        <hr>
+
+
+        <p>
+            📧 Email
+        </p>
+
+        <p>
+            user@conbox.com
+        </p>
+
+
+        <hr>
+
+
+        <p>
+            📱 เบอร์โทรศัพท์
+        </p>
+
+        <p>
+            08X-XXX-XXXX
+        </p>
+
+
+        <br>
+
+
+        <button
+            class="btn"
+            onclick="go('rental')"
+        >
+            My Rental
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NOTIFICATIONS
+========================= -->
+
+<section
+    id="notifications"
+    class="page"
+>
+
+    <h1>
+        Notifications
+    </h1>
+
+
+    <div class="notification">
+
+        🔔 <b>
+            การจองสำเร็จ
+        </b>
+
+        <br>
+
+        รายการเช่าของคุณได้รับการยืนยันแล้ว
+
+    </div>
+
+
+    <div class="notification">
+
+        📦 <b>
+            สินค้าใกล้ถึงกำหนดคืน
+        </b>
+
+        <br>
+
+        กรุณาคืนสินค้าตามเวลาที่กำหนด
+
+    </div>
+
+
+    <div class="notification">
+
+        🎉 <b>
+            โปรโมชั่นพิเศษ
+        </b>
+
+        <br>
+
+        รับส่วนลดสำหรับการเช่าครั้งถัดไป
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   PRODUCT DATA
+========================= */
+
+const products = [
+
+    {
+        name: "กล้องถ่ายรูป",
+        icon: "📷",
+        price: 300,
+        description:
+        "กล้องถ่ายรูปสำหรับท่องเที่ยวและกิจกรรมต่าง ๆ"
+    },
+
+    {
+        name: "Projector",
+        icon: "📽️",
+        price: 250,
+        description:
+        "โปรเจกเตอร์สำหรับนำเสนอหรือดูหนัง"
+    },
+
+    {
+        name: "เต็นท์",
+        icon: "⛺",
+        price: 200,
+        description:
+        "เต็นท์สำหรับแคมป์ปิ้งและท่องเที่ยว"
+    },
+
+    {
+        name: "ลำโพง",
+        icon: "🔊",
+        price: 150,
+        description:
+        "ลำโพงสำหรับงานปาร์ตี้และกิจกรรม"
+    },
+
+    {
+        name: "GoPro",
+        icon: "🎥",
+        price: 350,
+        description:
+        "กล้อง Action Camera สำหรับกิจกรรมกลางแจ้ง"
+    },
+
+    {
+        name: "Gaming Console",
+        icon: "🎮",
+        price: 400,
+        description:
+        "เครื่องเล่นเกมสำหรับเช่าเล่นที่บ้าน"
+    }
+
+];
+
+
+let selectedProduct = null;
+
+let selectedLockerName = "";
+
+let selectedPaymentMethod = "";
+
+let currentRental = null;
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function go(pageId) {
+
+    const pages =
+        document.querySelectorAll(".page");
+
+
+    pages.forEach(function(page) {
+
+        page.classList.remove("active");
+
+    });
+
+
+    const target =
+        document.getElementById(pageId);
+
+
+    if (target) {
+
+        target.classList.add("active");
+
+        window.scrollTo(0, 0);
+
+    }
+
+}
+
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
+function renderProducts(list) {
+
+    const container =
+        document.getElementById("productList");
+
+
+    container.innerHTML = "";
+
+
+    if (list.length === 0) {
+
+        container.innerHTML =
+            "<p>ไม่พบสินค้าที่ค้นหา</p>";
+
+        return;
+
+    }
+
+
+    list.forEach(function(product) {
+
+        const index =
+            products.indexOf(product);
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className = "card";
+
+
+        card.innerHTML =
+
+            '<div class="product-img">' +
+                product.icon +
+            '</div>' +
+
+            '<h3>' +
+                product.name +
+            '</h3>' +
+
+            '<p>' +
+                product.description +
+            '</p>' +
+
+            '<div class="price">' +
+                '฿' +
+                product.price +
+                ' / วัน' +
+            '</div>' +
+
+            '<button class="btn" ' +
+                'onclick="openDetail(' +
+                index +
+                ')">' +
+
+                'ดูรายละเอียด' +
+
+            '</button>';
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   DETAIL
+========================= */
+
+function openDetail(index) {
+
+    selectedProduct =
+        products[index];
+
+
+    const container =
+        document.getElementById(
+            "detailContent"
+        );
+
+
+    container.innerHTML =
+
+        '<div class="detail-box">' +
+
+            '<div class="detail-img">' +
+                selectedProduct.icon +
+            '</div>' +
+
+            '<div>' +
+
+                '<h1>' +
+                    selectedProduct.name +
+                '</h1>' +
+
+                '<p>' +
+                    selectedProduct.description +
+                '</p>' +
+
+                '<h2 class="price">' +
+                    '฿' +
+                    selectedProduct.price +
+                    ' / วัน' +
+                '</h2>' +
+
+                '<p>✓ ตรวจสอบสินค้าก่อนส่งมอบ</p>' +
+
+                '<p>✓ รับสินค้าผ่าน Smart Locker</p>' +
+
+                '<p>✓ คืนสินค้าได้ง่าย</p>' +
+
+                '<br>' +
+
+                '<button ' +
+                    'class="btn gray" ' +
+                    'onclick="go(\'products\')">' +
+
+                    '← กลับ' +
+
+                '</button> ' +
+
+                '<button ' +
+                    'class="btn" ' +
+                    'onclick="openBooking()">' +
+
+                    'เช่าสินค้านี้ →' +
+
+                '</button>' +
+
+            '</div>' +
+
+        '</div>';
+
+
+    go("detail");
+
+}
+
+
+/* =========================
+   BOOKING
+========================= */
+
+function openBooking() {
+
+    if (!selectedProduct) {
+
+        go("products");
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "bookingProduct"
+    ).innerHTML =
+
+        "<b>สินค้า:</b> " +
+
+        selectedProduct.name +
+
+        " — ฿" +
+
+        selectedProduct.price +
+
+        " / วัน";
+
+
+    document.getElementById(
+        "startDate"
+    ).value = "";
+
+
+    document.getElementById(
+        "endDate"
+    ).value = "";
+
+
+    document.getElementById(
+        "quantity"
+    ).value = "1";
+
+
+    document.getElementById(
+        "totalPrice"
+    ).innerText = "฿0";
+
+
+    go("booking");
+
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+function calculatePrice() {
+
+    if (!selectedProduct) {
+
+        return;
+
+    }
+
+
+    const start =
+        document.getElementById(
+            "startDate"
+        ).value;
+
+
+    const end =
+        document.getElementById(
+            "endDate"
+        ).value;
+
+
+    const quantity =
+        Number(
+            document.getElementById(
+                "quantity"
+            ).value
+        );
+
+
+    if (!start || !end) {
+
+        document.getElementById(
+            "totalPrice"
+        ).innerText = "฿0";
+
+        return;
+
+    }
+
+
+    const startDate =
+        new Date(start);
+
+
+    const endDate =
+        new Date(end);
+
+
+    const difference =
+        endDate - startDate;
+
+
+    let days =
+        Math.ceil(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    if (days < 1) {
+
+        days = 1;
+
+    }
+
+
+    const total =
+        selectedProduct.price *
+        days *
+        quantity;
+
+
+    document.getElementById(
+        "totalPrice"
+    ).innerText =
+
+        "฿" +
+        total.toLocaleString();
+
+}
+
+
+/* =========================
+   LOCKER
+========================= */
+
+function goLocker() {
+
+    if (!selectedProduct) {
+
+        alert(
+            "กรุณาเลือกสินค้าก่อน"
+        );
+
+        return;
+
+    }
+
+
+    const start =
+        document.getElementById(
+            "startDate"
+        ).value;
+
+
+    const end =
+        document.getElementById(
+            "endDate"
+        ).value;
+
+
+    if (!start || !end) {
+
+        alert(
+            "กรุณาเลือกวันที่"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        new Date(end) <
+        new Date(start)
+    ) {
+
+        alert(
+            "วันที่คืนต้องไม่ก่อนวันที่เริ่มเช่า"
+        );
+
+        return;
+
+    }
+
+
+    go("locker");
+
+}
+
+
+/* =========================
+   SELECT LOCKER
+========================= */
+
+function selectLocker(
+    element,
+    lockerName
+) {
+
+    const lockers =
+        document.querySelectorAll(
+            ".locker"
+        );
+
+
+    lockers.forEach(function(locker) {
+
+        locker.classList.remove(
+            "selected"
+        );
+
+    });
+
+
+    element.classList.add(
+        "selected"
+    );
+
+
+    selectedLockerName =
+        lockerName;
+
+
+    document.getElementById(
+        "selectedLocker"
+    ).innerText =
+        lockerName;
+
+}
+
+
+/* =========================
+   PAYMENT
+========================= */
+
+function goPayment() {
+
+    if (!selectedLockerName) {
+
+        alert(
+            "กรุณาเลือก Smart Locker"
+        );
+
+        return;
+
+    }
+
+
+    calculatePrice();
+
+
+    const total =
+        document.getElementById(
+            "totalPrice"
+        ).innerText;
+
+
+    document.getElementById(
+        "paymentSummary"
+    ).innerHTML =
+
+        "<p><b>สินค้า:</b> " +
+        selectedProduct.name +
+        "</p>" +
+
+        "<p><b>จุดรับ:</b> " +
+        selectedLockerName +
+        "</p>" +
+
+        "<p><b>ยอดชำระ:</b> " +
+        total +
+        "</p>";
+
+
+    go("payment");
+
+}
+
+
+/* =========================
+   PAYMENT METHOD
+========================= */
+
+function selectPayment(method) {
+
+    selectedPaymentMethod =
+        method;
+
+
+    document.getElementById(
+        "selectedPayment"
+    ).innerText =
+        method;
+
+}
+
+
+/* =========================
+   CONFIRM
+========================= */
+
+function confirmBooking() {
+
+    if (!selectedPaymentMethod) {
+
+        alert(
+            "กรุณาเลือกวิธีชำระเงิน"
+        );
+
+        return;
+
+    }
+
+
+    const code =
+        "CB" +
+        Math.floor(
+            100000 +
+            Math.random() *
+            900000
+        );
+
+
+    currentRental = {
+
+        code: code,
+
+        product:
+            selectedProduct.name,
+
+        locker:
+            selectedLockerName,
+
+        payment:
+            selectedPaymentMethod,
+
+        start:
+            document.getElementById(
+                "startDate"
+            ).value,
+
+        end:
+            document.getElementById(
+                "endDate"
+            ).value,
+
+        total:
+            document.getElementById(
+                "totalPrice"
+            ).innerText
+
+    };
+
+
+    document.getElementById(
+        "bookingCode"
+    ).innerText =
+        code;
+
+
+    updateRental();
+
+
+    go("success");
+
+}
+
+
+/* =========================
+   RENTAL
+========================= */
+
+function updateRental() {
+
+    if (!currentRental) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "rentalContent"
+    ).innerHTML =
+
+        "<h2>📦 " +
+        currentRental.product +
+        "</h2>" +
+
+        "<p><b>รหัสการจอง:</b> " +
+        currentRental.code +
+        "</p>" +
+
+        "<p><b>วันเริ่มเช่า:</b> " +
+        currentRental.start +
+        "</p>" +
+
+        "<p><b>วันคืน:</b> " +
+        currentRental.end +
+        "</p>" +
+
+        "<p><b>Smart Locker:</b> " +
+        currentRental.locker +
+        "</p>" +
+
+        "<p><b>การชำระเงิน:</b> " +
+        currentRental.payment +
+        "</p>" +
+
+        '<h2 class="price">' +
+        currentRental.total +
+        "</h2>" +
+
+        "<hr>" +
+
+        '<button class="btn" ' +
+        'onclick="go(\'success\')">' +
+
+        "ดู QR รับสินค้า" +
+
+        "</button>";
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProduct() {
+
+    const keyword =
+        document.getElementById(
+            "search"
+        ).value.toLowerCase();
+
+
+    const filtered =
+        products.filter(
+            function(product) {
+
+                return product.name
+                    .toLowerCase()
+                    .includes(keyword);
+
+            }
+        );
+
+
+    renderProducts(filtered);
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderProducts(products);
+
+</script>
+
+</body>
+</html>
